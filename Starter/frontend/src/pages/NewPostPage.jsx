@@ -12,7 +12,7 @@ async function handleSubmit(data) {
     setSubmitting(true)
     setError(null)
     try {
-      const response = await fetch('https://ws06-react-backend.onrender.com/api/posts', { 
+      const response = await fetch('https://ws06-react.onrender.com.onrender.com/api/posts', { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
