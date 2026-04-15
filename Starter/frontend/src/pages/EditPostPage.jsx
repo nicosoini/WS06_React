@@ -14,7 +14,7 @@ function EditPostPage() {
   useEffect(() => {
     async function fetchPost() {
       try {
-        const response = await fetch(`/api/posts${id}`);
+        const response = await fetch(`/api/posts/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch post");
         }
