@@ -29,28 +29,27 @@ function EditPostPage() {
     fetchPost()
   }, [id]);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setSubmitting(true);
-    setError(null);
-    try {
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
-      const response = await fetch(`/api/posts/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to update post");
-      }
-      navigate(`/posts/${id}`);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setSubmitting(false);
+async function handleSubmit(data) {
+  setSubmitting(true);
+  setError(null);
+  try {
+    const response = await fetch(`/api/posts/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to update post");
     }
+    
+    navigate(`/posts/${id}`);
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setSubmitting(false);
   }
+}
 
   if (loading) return <p className="status-msg">Loading…</p>;
   if (error && !post) return <p className="status-msg error">{error}</p>;
