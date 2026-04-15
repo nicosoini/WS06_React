@@ -1,0 +1,146 @@
+/* ── Layout ────────────────────────────────────────────── */
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* ── Section wrapper ───────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+/* ── Greeting card ─────────────────────────────────────── */
+.greeting {
+  font-size: 1.1rem;
+}
+
+.greeting strong {
+  color: var(--accent);
+}
+
+/* ── Profile card ──────────────────────────────────────── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.profile-card .role {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 2px 10px;
+  margin-bottom: 0.5rem;
+}
+
+.profile-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ── Counter card ──────────────────────────────────────── */
+.counter-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.counter-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.counter-card p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.count {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.counter-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.counter-actions button {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.counter-actions button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.counter-actions button.reset {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.counter-actions button.reset:hover {
+  background: var(--border);
+  color: var(--text);
+}
