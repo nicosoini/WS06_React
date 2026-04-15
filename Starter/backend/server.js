@@ -1,13 +1,16 @@
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors'); 
 require('dotenv').config();
 
 const postsRouter = require('./routes/posts');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const publicDir = path.join(__dirname, 'public');
+
+
+const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'dist');
 
 async function connectToDatabase() {
   if (!process.env.MONGODB_URI) {
@@ -24,19 +27,21 @@ async function connectToDatabase() {
   }
 }
 
-app.locals.publicDir = publicDir;
+app.use(cors()); 
 app.use(express.json());
-app.use(express.static(publicDir));
+
+app.use(express.static(frontendBuildPath));
 
 app.use('/api/posts', postsRouter);
-app.get('/', (req, res) => {
-  res.send('Backend API is running');
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
 });
 
+// --- Start Server ---
 connectToDatabase().then(() => {
   app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}/api/posts`);
-    console.log('Mounted routers:');
-    console.log('  /api/posts -> routes/posts.js');
+    console.log(`Server is running on port ${PORT}`);
+    console.log(`Serving frontend from: ${frontendBuildPath}`);
   });
 });
