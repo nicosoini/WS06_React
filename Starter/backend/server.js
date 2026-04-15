@@ -28,9 +28,9 @@ async function connectToDatabase() {
 
 app.use(express.json());
 
-app.use(express.static(frontendBuildPath));
-
 app.use('/api/posts', postsRouter);
+
+app.use(express.static(frontendBuildPath));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(frontendBuildPath, 'index.html'));
