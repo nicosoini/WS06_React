@@ -7,21 +7,21 @@ function NewPostPage() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+// Inside NewPostPage.jsx
+async function handleSubmit(data) {
     setSubmitting(true)
     setError(null)
     try {
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData);
-      const response = await fetch(`/api/posts/`, {
+      const response = await fetch(`api/posts/`, { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+
       if (!response.ok) {
         throw new Error("Failed to create post");
       }
+      
       const created = await response.json()
       navigate(`/posts/${created._id}`);
     } catch (err) {
@@ -29,7 +29,7 @@ function NewPostPage() {
     } finally {
       setSubmitting(false);
     }
-  }
+}
 
   return (
     <div>
