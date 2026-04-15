@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 
-// A presentational component — receives a post object via props
-// and renders a card. No state, no side effects.
 function PostCard({ post }) {
   const date = new Date(post.createdAt).toLocaleDateString('fi-FI', {
     year: 'numeric',

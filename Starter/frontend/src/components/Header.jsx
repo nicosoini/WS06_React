@@ -6,10 +6,12 @@ function Header() {
       <div className="header-inner">
         <Link to="/" className="brand">WS06 React</Link>
         <nav className="nav">
-          {/* TODO (student): Add navigation links as you complete routes. */}
           <NavLink to="/" end>Home</NavLink>
           <NavLink to="/blog">Blog</NavLink>
-          {/* Suggested links to add: /about, /contact, /posts/new */}
+          <NavLink to="/posts/new">New Post</NavLink>
+          
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </nav>
       </div>
     </header>
